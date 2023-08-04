@@ -1,0 +1,5 @@
+@layer components {
+  .global-card-styles {
+    @apply tw-rounded-lg tw-bg-gray-100 tw-shadow-lg tw-border tw-border-purple-500 #{!important};
+  }
+}

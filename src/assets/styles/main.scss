@@ -1,0 +1,35 @@
+@import "variables/config.scss";
+@import "animations.scss";
+@import "global-styles.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+
+
+    /* Apply the styles to the scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+    ::-webkit-scrollbar {
+      width: 12px; /* Set the width of the scrollbar */
+    }
+
+    /* Track (background) of the scrollbar */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; /* You can set any background color you like */
+    }
+
+    /* Handle (thumb) of the scrollbar */
+    ::-webkit-scrollbar-thumb {
+      background: #5ca4e0; /* Set the light blue color for the thumb */
+      border-radius: 6px; /* Round the corners of the thumb */
+    }
+
+    /* Optional: Hover state for the thumb */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b7ab3; /* Set a slightly darker blue color on hover */
+    }
+  }
+}

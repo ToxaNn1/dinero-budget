@@ -1,0 +1,5 @@
+:root {
+  --header-content__height: 65px;
+  --footer-content__height: 50px;
+  --main-content__height: calc(100vh - var(--footer-content__height) - var(--header-content__height));
+}
