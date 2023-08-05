@@ -171,14 +171,14 @@ const categoryOption = computed(() => {
     series: categoryChartData.value.map((category, index) => {
       return {
         data: getDatesForMonth.value.map((day) => {
-          if (category.data.length === 0) return 0
-          for (const item of category.data) {
+          if (category.data.length === 0) return null
+
+          return category.data.reduce((accumulator, item) => {
             if (day === dayjs(item.date).format(globalFormModel.value.globalDateFormat)) {
-              return item.amount
-            } else {
-              return 0
+              return accumulator + Number(item.amount)
             }
-          }
+            return accumulator
+          }, 0)
         }),
         type: graphicType.value,
         name: category.category,
