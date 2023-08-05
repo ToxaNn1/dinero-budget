@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, PropType, ref, onMounted } from 'vue'
+import { defineProps, onMounted, PropType, ref } from 'vue'
 import type { CardOption } from '@/types/pages/dashboard-page.types'
 import DineroButton from '@/components/ui/form/DineroButton.vue'
 import { useDashboardStore } from '@/stores/useDashboardStore'
@@ -83,6 +83,6 @@ const dashboardStore = useDashboardStore()
 const { cardsData, isFetchingCardsData } = storeToRefs(dashboardStore)
 
 onMounted(async () => {
-  const data = await dashboardStore.getCardsData()
+  await dashboardStore.getCardsData()
 })
 </script>

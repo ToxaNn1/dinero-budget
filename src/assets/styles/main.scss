@@ -1,6 +1,6 @@
-@import "variables/config.scss";
-@import "animations.scss";
-@import "global-styles.scss";
+@import 'variables/config.scss';
+@import 'animations.scss';
+@import 'global-styles.scss';
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,6 @@
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
-
 
     /* Apply the styles to the scrollbar for Webkit browsers (Chrome, Safari, etc.) */
     ::-webkit-scrollbar {

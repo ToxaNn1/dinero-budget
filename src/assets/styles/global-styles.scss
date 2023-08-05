@@ -2,4 +2,8 @@
   .global-card-styles {
     @apply tw-rounded-lg tw-bg-gray-100 tw-shadow-lg tw-border tw-border-purple-500 #{!important};
   }
+
+  .global-tag {
+    @apply tw-inline-flex tw-items-center tw-gap-[5px] tw-px-[8px] tw-py-[4px] tw-w-[110px] tw-bg-blue-300 tw-text-white tw-rounded-[4px];
+  }
 }

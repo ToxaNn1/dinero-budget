@@ -1,9 +1,14 @@
 import * as echarts from 'echarts'
-import { TYPE_CHARTS } from '@/types/global'
+import { KIND_OF_CHART, TYPE_CHART_TYPE } from '@/types/chart/chart'
 
-export const TYPE_CHART = Object.freeze<Record<string, TYPE_CHARTS>>({
+export const TYPE_CHART = Object.freeze<Record<string, TYPE_CHART_TYPE>>({
   LINE: 'line',
   BAR: 'bar'
+})
+
+export const KIND_OF_CHART = Object.freeze<Record<string, KIND_OF_CHART>>({
+  TOTAL_CHART: 'Total Chart',
+  CATEGORY_CHART: 'Category Chart'
 })
 
 export const chartColorStyles = [

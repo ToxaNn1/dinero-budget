@@ -1,4 +1,4 @@
-import { CategoriesSelectOptions, Currency, FormModel, PayType } from '@/types/global'
+import { FormModel } from '@/types/models'
 
 export const formSpendingsModel: FormModel = {
   description: '',

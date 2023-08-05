@@ -60,9 +60,10 @@ import DineroSelect from '@/components/ui/form/DineroSelect.vue'
 import DineroButtonGroup from '@/components/ui/form/DineroButtonGroup.vue'
 import DineroButton from '@/components/ui/form/DineroButton.vue'
 import DineroDatePicker from '@/components/ui/form/DineroDatePicker.vue'
-import { FinancialCollectionType, FormModel } from '@/types/global'
+import { FinancialCollectionType } from '@/types/global'
 import { FINANCIAL_COLLECTION_TYPE } from '@/constants/config'
 import { PAY_TYPES, CURRENCIES, CATEGORIES_SELECT_OPTIONS } from '@/constants/config'
+import { FormModel } from '@/types/models'
 
 const props = defineProps({
   formModel: {

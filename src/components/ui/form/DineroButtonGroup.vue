@@ -1,14 +1,13 @@
 <template>
   <v-btn-toggle
-    v-bind="$attrs"
     :model-value="modelValue"
     color="primary"
     variant="outlined"
     :density="density"
     @update:model-value="$emit('update:modelValue', $event)"
   >
-    <DineroButton v-for="(btn, index) in buttonsOptions" :key="index" variant="tonal" :value="btn"
-      >{{ btn }}
+    <DineroButton v-for="(btn, index) in buttonsOptions" :key="index" variant="tonal" :value="btn">
+      {{ btn }}
     </DineroButton>
   </v-btn-toggle>
 </template>

@@ -80,7 +80,7 @@ export const useFirebaseCommand = defineStore('useFirebaseCommand', () => {
     documentType: FirebaseDocumentType = FINANCIAL_COLLECTION_TYPE.SPENDINGS,
     yearDocuments = 2023,
     nameOfSubcollection: any = NAME_OF_SUB_COLLECTION,
-    nameOfCollection: any = auth?.currentUser.email
+    nameOfCollection: string = auth?.currentUser.email
   ) => {
     try {
       globalLoading.value = true

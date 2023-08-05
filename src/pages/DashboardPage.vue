@@ -51,7 +51,7 @@ const firebaseStore = useFirebaseCommand()
 
 const authForm = reactive({
   email: 'test@gmail.com',
-  password: 'test@gmail.com'
+  password: '123'
 })
 
 const login = async () => {
@@ -60,7 +60,7 @@ const login = async () => {
 }
 
 const getData = async () => {
-  const response = await firebaseStore.getMonthData()
+  await firebaseStore.getMonthData()
 }
 
 watch(

@@ -28,27 +28,27 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed, defineEmits, watch } from "vue";
-import { CloseCircle } from "@vicons/ionicons5";
-import { useRoute } from "vue-router";
+import { defineProps, computed, defineEmits } from 'vue'
+import { CloseCircle } from '@vicons/ionicons5'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
   title: {
     type: String,
-    default: "",
+    default: ''
   },
   isShowModal: {
     type: Boolean,
-    default: true,
-  },
-});
+    default: true
+  }
+})
 
-defineEmits(["close"]);
-const route = useRoute();
+defineEmits(['close'])
+const route = useRoute()
 
 const openModal = computed(() => {
-  return route.meta?.isShowModal && props.isShowModal;
-});
+  return route.meta?.isShowModal && props.isShowModal
+})
 </script>
 
 <style lang="scss">

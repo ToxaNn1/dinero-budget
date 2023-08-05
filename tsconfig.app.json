@@ -5,9 +5,6 @@
     "src/**/*",
     "src/**/*.vue",
     "node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-    "../../../../Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts",
-    "../../../../Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts",
-    "../../../../Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts"
   ],
   "exclude": [
     "src/**/__tests__/*"

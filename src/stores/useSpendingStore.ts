@@ -92,7 +92,6 @@ export const useSpendingStore = defineStore('useSpendingStore', () => {
   }
 
   const onDeleteTableRow = async () => {
-    console.log(231123)
     isOpenDialogForDeleteActions.value = false
     await firebaseStore.deleteMonthData(tableRowItem.value)
     await getTableData()

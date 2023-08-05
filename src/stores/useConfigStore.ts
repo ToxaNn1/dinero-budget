@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, reactive } from 'vue'
-import { GlobalFormModel } from '@/types/global'
+import { GlobalFormModel } from '@/types/models'
 import { collection, doc, DocumentData, getDoc, setDoc } from '@firebase/firestore'
 import { db } from '@/main'
 import { pathToFirebaseDoc } from '@/helpers/pathToFirebaseDoc'
@@ -57,7 +57,7 @@ export const useConfigStore = defineStore('useConfigStore', () => {
     globalLoading.value = false
   }
 
-  const changeGlobalFormModel = (key: string, value: any) => {
+  const changeGlobalFormModel = (key: string, value: string) => {
     globalFormModel[key] = value
     localStorage.setItem(key, value)
   }

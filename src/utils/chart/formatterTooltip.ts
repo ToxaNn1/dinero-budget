@@ -1,6 +1,8 @@
-export const formatterTooltip = (params: any, format = 'DD/MM/YY HH:mm:ss') => {
+import { FormatterParams } from '@/types/chart/chart'
+
+export const formatterTooltip = (params: FormatterParams[]) => {
   return params
-    .map((item: any) => {
+    .map((item: FormatterParams) => {
       if (item.value > 0) {
         return (
           '<div class="tw-flex tw-no-wrap tw-items-start tw-justify-between tw-w-full">' +

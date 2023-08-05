@@ -1,6 +1,5 @@
 import { defineStore, storeToRefs } from 'pinia'
 import { useFirebaseCommand } from '@/stores/useFirebaseCommand'
-import { convertTimestamp } from '@/utils/convertTimestamp'
 import { ref, Ref, UnwrapRef } from 'vue'
 import { useConfigStore } from '@/stores/useConfigStore'
 

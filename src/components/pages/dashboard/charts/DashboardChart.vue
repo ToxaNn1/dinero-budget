@@ -14,16 +14,13 @@
     </v-row>
     <v-row>
       <v-col>
-        <DineroButtonGroup
-          v-model="chartType"
-          :buttons-options="['Category Chart', 'Total Chart']"
-        />
+        <DineroButtonGroup v-model="chartType" :buttons-options="Object.values(KIND_OF_CHART)" />
       </v-col>
       <v-col>
-        <DineroButtonGroup v-model="graphicType" :buttons-options="['line', 'bar']" />
+        <DineroButtonGroup v-model="graphicType" :buttons-options="Object.values(TYPE_CHART)" />
       </v-col>
     </v-row>
-    <v-row v-if="chartType === 'Total Chart'">
+    <v-row v-if="chartType === KIND_OF_CHART.TOTAL_CHART">
       <v-col>
         <v-chart
           v-if="filteredChartData"
@@ -57,10 +54,11 @@ import dayjs from 'dayjs'
 import { useConfigStore } from '@/stores/useConfigStore'
 import { CATEGORY_VALUES } from '@/constants/categories'
 import DineroButtonGroup from '@/components/ui/form/DineroButtonGroup.vue'
-import { chartColorStyles, TYPE_CHART } from '@/constants/chart.constants'
+import { chartColorStyles, KIND_OF_CHART, TYPE_CHART } from '@/constants/chart.constants'
 import { formatterTooltip } from '@/utils/chart/formatterTooltip'
 import { useTableStore } from '@/stores/useTableStore'
 import { getMonthNumber } from '@/utils/getMonthNumber'
+import { FormatterParams, TYPE_CHART_TYPE } from '@/types/chart/chart'
 
 const configStore = useConfigStore()
 const { globalFormModel } = storeToRefs(configStore)
@@ -77,9 +75,10 @@ const filterChart = reactive({
   to: ''
 })
 
-const chartType = ref('Category Chart')
+const chartType = ref(KIND_OF_CHART.CATEGORY_CHART)
+const graphicType = ref<TYPE_CHART_TYPE>(TYPE_CHART.BAR)
+
 const filteredChartData = ref()
-const graphicType = ref(TYPE_CHART.BAR)
 
 const totalSpendings = computed(() => {
   return Array.from(
@@ -147,7 +146,7 @@ const categoryOption = computed(() => {
   return {
     tooltip: {
       trigger: 'axis',
-      formatter: (params: any) => formatterTooltip(params),
+      formatter: (params: FormatterParams[]) => formatterTooltip(params),
       axisPointer: {
         type: 'cross'
       }
@@ -195,9 +194,6 @@ const categoryOption = computed(() => {
 })
 
 const option = computed(() => {
-  if (!Array.isArray(filteredChartData.value) || filteredChartData.value.length === 0) {
-    return {}
-  }
   return {
     tooltip: {
       trigger: 'axis',
@@ -241,7 +237,7 @@ const option = computed(() => {
       {
         name: 'Spending',
         data: filteredChartData.value?.map((item) => item?.amount),
-        type: 'line',
+        type: graphicType.value,
         smooth: true,
         itemStyle: {
           color: 'rgb(255, 70, 131)'

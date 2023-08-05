@@ -1,7 +1,6 @@
 <template>
   <v-dialog
     :model-value="modelValue"
-    v-bind="$attrs"
     :max-width="dialogMaxWidth"
     @update:model-value="$emit('update:modelValue', $event)"
   >
@@ -18,7 +17,6 @@
           <slot name="drawerContent">
             <DineroForm
               :form-model="formModel"
-              @on-submit-form="test"
               @on-remove-button="$emit('on-remove-button', $event)"
               @on-add-button="$emit('on-add-button', $event)"
             />
@@ -30,11 +28,10 @@
         <slot name="drawerAction">
           <v-spacer />
           <DineroButton :button-content="cancelButtonContent" @click="$emit('onCancelButton')" />
-          <DineroButton :button-content="submitButtonContent" @click="test" />
-          <!--          <DineroButton-->
-          <!--            :button-content="submitButtonContent"-->
-          <!--            @click="$emit('on-submit-button', oldFormModel)"-->
-          <!--          />-->
+          <DineroButton
+            :button-content="submitButtonContent"
+            @click="$emit('on-submit-button', oldFormModel)"
+          />
           <DineroButton
             v-if="tableActionName === 'ADD_ACTION'"
             button-content="Add new form"
@@ -50,7 +47,7 @@
 import DineroButton from '@/components/ui/form/DineroButton.vue'
 import DineroForm from '@/components/ui/form/DineroForm.vue'
 import { onMounted, PropType, ref, toRef, watch } from 'vue'
-import { FormModel } from '@/types/global'
+import { FormModel } from '@/types/models'
 
 const props = defineProps({
   modelValue: {
@@ -89,7 +86,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits([
+defineEmits([
   'update:modelValue',
   'onAddButton',
   'onCancelButton',
@@ -99,11 +96,6 @@ const emit = defineEmits([
 ])
 
 const oldFormModel = ref({})
-
-const test = () => {
-  console.log('test')
-  emit('on-submit-button', oldFormModel.value)
-}
 
 // це піздєц
 // для firebase updateMonthData  треба передати два значення

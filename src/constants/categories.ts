@@ -1,5 +1,5 @@
 import { Categories } from '@/types/global'
-import type { Component } from 'vue'
+// import type { Component } from 'vue'
 // import food from '@/assets/icons/categories/food.vue'
 // import clothes from '@/assets/icons/categories/clothes.vue'
 // import transport from '@/assets/icons/categories/transport.vue'

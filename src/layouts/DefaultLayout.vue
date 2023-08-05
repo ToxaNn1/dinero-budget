@@ -36,7 +36,6 @@ const configStore = useConfigStore()
 
 const { globalLoading, globalFormModel } = storeToRefs(configStore)
 const { chartData } = storeToRefs(spendingStore)
-const { tableData } = storeToRefs(tableStore)
 
 const { getTableData } = tableStore
 const { getChartData } = spendingStore

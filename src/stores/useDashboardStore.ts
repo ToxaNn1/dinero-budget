@@ -3,7 +3,6 @@ import { useFetch } from '@/composables/useFetch'
 import { useFirebaseCommand } from '@/stores/useFirebaseCommand'
 import { auth } from '@/main'
 import { convertTimestamp } from '@/utils/convertTimestamp'
-import { notify } from '@/plugins/toast-notification'
 import { Ref, UnwrapRef } from 'vue'
 
 interface TableData {

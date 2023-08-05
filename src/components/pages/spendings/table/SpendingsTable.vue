@@ -30,7 +30,7 @@
             >
               <template #activator-content>
                 <div class="tw-flex tw-w-full tw-items-center tw-gap-4">
-                  <DineroButton class="ml-3" @click="onOpenDialogForAddNewActions">
+                  <DineroButton class="ml-3" @click="onActionTable(TABLE_ACTIONS.ADD_ACTION)">
                     New Item
                   </DineroButton>
                   <h2 class="tw-text-2xl">
@@ -43,7 +43,7 @@
           </v-toolbar>
         </template>
         <template #[`item.category`]="{ item }">
-          <div class="table-tag">
+          <div class="global-tag">
             <DineroIcon color="#663399" :icon="item.columns.category.icon" />
             <p>{{ item.columns.category.label }}</p>
           </div>
@@ -54,10 +54,21 @@
           </p>
         </template>
         <template #[`item.actions`]="{ item }">
-          <v-icon size="small" color="primary" class="me-2" @click="onEditTableTow(item)">
+          <v-icon
+            size="small"
+            color="primary"
+            class="me-2"
+            @click="onActionTable(TABLE_ACTIONS.EDIT_ACTION, item)"
+          >
             mdi-pencil
           </v-icon>
-          <v-icon size="small" color="error" @click="onDeleteTableTow(item)"> mdi-delete </v-icon>
+          <v-icon
+            size="small"
+            color="error"
+            @click="onActionTable(TABLE_ACTIONS.DELETE_ACTION, item)"
+          >
+            mdi-delete
+          </v-icon>
         </template>
         <template #no-data>
           <v-btn color="primary" @click="tableStore.getTableData">Refetch</v-btn>
@@ -130,7 +141,7 @@ import DineroButton from '@/components/ui/form/DineroButton.vue'
 import DineroInput from '@/components/ui/form/DineroInput.vue'
 import DineroTableDIalog from '@/components/ui/table/DineroTableDIalog.vue'
 import { useSpendingStore } from '@/stores/useSpendingStore'
-import { FormModel } from '@/types/global'
+import { FormModel } from '@/types/models'
 import dayjs from 'dayjs'
 import DineroSelect from '@/components/ui/form/DineroSelect.vue'
 import { CATEGORIES_SELECT_OPTIONS } from '@/constants/config'
@@ -161,32 +172,16 @@ const {
 
 const tableActionName = ref(TABLE_ACTIONS.ADD_ACTION)
 const drawerShow = ref(false)
-
-const onEditTableTow = (item: FormModel) => {
-  spendingStore.getTableRow(item, TABLE_ACTIONS.EDIT_ACTION)
-  tableActionName.value = TABLE_ACTIONS.EDIT_ACTION
-}
-
-const onDeleteTableTow = (item: FormModel) => {
-  console.log(item)
-  spendingStore.getTableRow(item, TABLE_ACTIONS.DELETE_ACTION)
-  tableActionName.value = TABLE_ACTIONS.DELETE_ACTION
-}
+const tableItemsPerPage = ref(8)
 
 const sumAmounts = computed(() => {
-  return filteredTableData.value.reduce((acc, item) => acc + +item.amount, 0)
+  return filteredTableData.value.reduce((acc, item) => acc + Number(item.amount), 0)
 })
 
-const onOpenDialogForAddNewActions = () => {
-  isOpenDialogForAddNewActions.value = true
-  tableActionName.value = 'ADD_ACTION'
+const onActionTable = (action: TABLE_ACTIONS, item: FormModel) => {
+  tableActionName.value = action
+  action === TABLE_ACTIONS.ADD_ACTION
+    ? (isOpenDialogForAddNewActions.value = true)
+    : spendingStore.getTableRow(item, action)
 }
-
-const tableItemsPerPage = ref(5)
 </script>
-
-<style lang="scss">
-.table-tag {
-  @apply tw-inline-flex tw-items-center tw-gap-[5px] tw-px-[8px] tw-py-[4px] tw-w-[110px] tw-bg-blue-300 tw-text-white tw-rounded-[4px];
-}
-</style>
