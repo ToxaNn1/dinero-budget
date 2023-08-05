@@ -48,6 +48,11 @@
             <p>{{ item.columns.category.label }}</p>
           </div>
         </template>
+        <template #[`item.date`]="{ item }">
+          <p>
+            {{ dayjs(item.columns.date).format(globalFormModel.globalDateFormat) }}
+          </p>
+        </template>
         <template #[`item.actions`]="{ item }">
           <v-icon size="small" color="primary" class="me-2" @click="onEditTableTow(item)">
             mdi-pencil
@@ -126,6 +131,7 @@ import DineroInput from '@/components/ui/form/DineroInput.vue'
 import DineroTableDIalog from '@/components/ui/table/DineroTableDIalog.vue'
 import { useSpendingStore } from '@/stores/useSpendingStore'
 import { FormModel } from '@/types/global'
+import dayjs from 'dayjs'
 import DineroSelect from '@/components/ui/form/DineroSelect.vue'
 import { CATEGORIES_SELECT_OPTIONS } from '@/constants/config'
 import FiltersDrawer from '@/components/FiltersDrawer.vue'
@@ -162,6 +168,7 @@ const onEditTableTow = (item: FormModel) => {
 }
 
 const onDeleteTableTow = (item: FormModel) => {
+  console.log(item)
   spendingStore.getTableRow(item, TABLE_ACTIONS.DELETE_ACTION)
   tableActionName.value = TABLE_ACTIONS.DELETE_ACTION
 }
@@ -175,13 +182,6 @@ const onOpenDialogForAddNewActions = () => {
   tableActionName.value = 'ADD_ACTION'
 }
 
-// TODO   add pahination bottom sloy is reserved   <template #bottom>
-//     <div class="tw-px-4 tw-pt[22px]">
-//     <p>
-//         Total sum: <span>{{ sumAmounts }}</span>
-// </p>
-// </div>
-// </template>
 const tableItemsPerPage = ref(5)
 </script>
 

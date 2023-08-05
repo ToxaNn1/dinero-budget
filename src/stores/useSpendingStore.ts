@@ -58,7 +58,6 @@ export const useSpendingStore = defineStore('useSpendingStore', () => {
   const categoryFilter = ref('')
 
   const filteredTableData = computed(() => {
-    console.log(tableData.value, 'tableData.value')
     return tableData.value.filter((item) => {
       const itemDate = new Date(item.date)
       const start = new Date(fromDate.value)
@@ -93,6 +92,7 @@ export const useSpendingStore = defineStore('useSpendingStore', () => {
   }
 
   const onDeleteTableRow = async () => {
+    console.log(231123)
     isOpenDialogForDeleteActions.value = false
     await firebaseStore.deleteMonthData(tableRowItem.value)
     await getTableData()
@@ -131,7 +131,6 @@ export const useSpendingStore = defineStore('useSpendingStore', () => {
 
   const getChartData = async () => {
     const response = await getMonthData(globalFormModel.value.globalMonth)
-    console.log(response)
     if (response) {
       const arr = Object.keys(response)
         .map((key) => {

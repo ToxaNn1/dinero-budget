@@ -1,7 +1,6 @@
 import { collection, doc } from '@firebase/firestore'
 import { db, auth } from '@/main'
 import { pathToFirebaseDoc } from '@/helpers/pathToFirebaseDoc'
-import { getFirebaseDocumentName } from '@/utils/getFirebaseDocumentName'
 import { FINANCIAL_COLLECTION_TYPE, NAME_OF_SUB_COLLECTION } from '@/constants/config'
 import { FirebaseDocumentType } from '@/types/global'
 import { computed } from 'vue'

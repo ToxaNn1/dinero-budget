@@ -30,10 +30,7 @@ export const useTableStore = defineStore('useTableStore', () => {
         })
         .flatMap((item) => item)
         .map((item) => {
-          return {
-            ...item,
-            date: convertTimestamp(item.date, globalFormModel.value.globalDateFormat)
-          }
+          return { ...item }
         })
     } catch (e) {
       isFetchingTableData.value = false

@@ -2,7 +2,7 @@ import { defineStore, storeToRefs } from 'pinia'
 import { useFetch } from '@/composables/useFetch'
 import dayjs from 'dayjs'
 import { pathToFirebaseDoc } from '@/helpers/pathToFirebaseDoc'
-import { computed, toRaw, watch } from 'vue'
+import { computed, toRaw } from 'vue'
 import { db } from '@/main'
 import {
   arrayUnion,

@@ -61,7 +61,6 @@ const login = async () => {
 
 const getData = async () => {
   const response = await firebaseStore.getMonthData()
-  console.log(response)
 }
 
 watch(

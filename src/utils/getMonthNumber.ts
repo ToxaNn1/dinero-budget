@@ -17,6 +17,6 @@ export const getMonthNumber = (
   month: string | Date = globalFormModel.value.globalMonth
 ): number => {
   const newMonthQuardValue = month ? month : getMonthNameByNumber(dayjs().month())
-  const date = new Date(`${newMonthQuardValue} 1, 2000`)
+  const date = new Date(`${newMonthQuardValue} 1, 2023`)
   return date.getMonth()
 }
